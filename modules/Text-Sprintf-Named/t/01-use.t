@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 4;
+use Test::More tests => 6;
 
 use Text::Sprintf::Named;
 
@@ -34,3 +34,32 @@ use Text::Sprintf::Named;
 # TODO : test for:
 # 1. Consecutive percent signs.
 # 2. More than one double percent sign in a string.
+
+# n_s == named_sprintf
+sub n_s
+{
+    my $format = shift;
+    my $args = shift || {};
+
+    return
+        Text::Sprintf::Named->new({fmt => $format})
+            ->format({args => $args})
+        ;
+}
+
+# TODO: test several different calls to the same format returning 
+# different strings.
+
+{
+    # TEST
+    is (n_s("Format me %%%%%% There %%%%", {}),
+        "Format me %%% There %%",
+        "Testing multiple consecutive %-signs"
+    );
+
+    # TEST
+    is (n_s("I want\n%% Plus\n%% Minus%% Thrice\n%% Dice\n", {}),
+        "I want\n% Plus\n% Minus% Thrice\n% Dice\n",
+        "Testing multiple consecutive % sign"
+    );   
+}
