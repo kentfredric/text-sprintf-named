@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 7;
+use Test::More tests => 8;
 
 use Text::Sprintf::Named;
 
@@ -71,3 +71,12 @@ sub n_s
         "%(name)s conversion"
     );
 }
+
+{
+    # TEST
+    is (n_s("Welcome to %(year)d!", {name => "Tim", year => 20}),
+        "Welcome to 20!",
+        "%(name)d conversion"
+    );
+}
+

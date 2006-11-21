@@ -101,7 +101,7 @@ sub format
 
     my $format = $self->_fmt;
 
-    $format =~ s/%(%|\(([a-zA-Z_]\w*)\)(s))/
+    $format =~ s/%(%|\(([a-zA-Z_]\w*)\)([ds]))/
         $self->_conversion({
             format_args => $args,
             named_params => $named_params,
