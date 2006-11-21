@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 9;
+use Test::More tests => 10;
 
 use Text::Sprintf::Named;
 
@@ -86,5 +86,13 @@ sub n_s
             {bytes => 500, mychar => ord('C'),}),
         "You have 0x1f4 bytes left, and your lucky character is C",
         "Testing the %(name)x and %(name)c conversions"
+    );
+}
+
+{
+    # TEST
+    is (n_s("[%(name)10s]", { name => "Sophie" }),
+        "[    Sophie]",
+        "Testing a %(name)10s conversion"
     );
 }

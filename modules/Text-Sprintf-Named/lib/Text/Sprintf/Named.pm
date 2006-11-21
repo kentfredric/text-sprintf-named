@@ -101,7 +101,7 @@ sub format
 
     my $format = $self->_fmt;
 
-    $format =~ s/%(%|\(([a-zA-Z_]\w*)\)([DEFGOUXbcdefgiopsux]))/
+    $format =~ s/%(%|\(([a-zA-Z_]\w*)\)([\+\-\.\d]*[DEFGOUXbcdefgiopsux]))/
         $self->_conversion({
             format_args => $args,
             named_params => $named_params,
@@ -176,6 +176,10 @@ L<http://search.cpan.org/dist/Text::Sprintf::Named>
 =back
 
 =head1 ACKNOWLEDGEMENTS
+
+The (possibly ad-hoc) regex for matching the optional digits+symbols 
+parameters' prefix of the sprintf conversion was originally written by Bart 
+Lateur (BARTL on CPAN) for his L<String::Sprintf> module.
 
 =head1 COPYRIGHT & LICENSE
 
