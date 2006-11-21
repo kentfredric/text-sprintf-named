@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 6;
+use Test::More tests => 7;
 
 use Text::Sprintf::Named;
 
@@ -62,4 +62,12 @@ sub n_s
         "I want\n% Plus\n% Minus% Thrice\n% Dice\n",
         "Testing multiple consecutive % sign"
     );   
+}
+
+{
+    # TEST
+    is (n_s("Hello %(name)s!", {name => "Tim"}),
+        "Hello Tim!",
+        "%(name)s conversion"
+    );
 }

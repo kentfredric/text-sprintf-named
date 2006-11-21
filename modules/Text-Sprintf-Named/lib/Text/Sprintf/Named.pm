@@ -95,13 +95,39 @@ sub format
 {
     my $self = shift;
 
-    my $args = shift || { args => {}};
+    my $args = shift || {};
+
+    my $named_params = $args->{args} || {};
 
     my $format = $self->_fmt;
 
-    $format =~ s{%%}{%}g;
+    $format =~ s/%(%|\(([a-zA-Z_]\w*)\)(s))/
+        $self->_conversion({
+            format_args => $args,
+            named_params => $named_params,
+            conv => $1,
+            name => $2,
+            conv_raw => $3,
+        })
+        /ge;
 
     return $format;
+}
+
+sub _conversion
+{
+    my ($self, $args) = @_;
+
+    if ($args->{conv} eq "%")
+    {
+        return "%";
+    }
+    else
+    {
+        return sprintf(("%" . $args->{conv_raw}),
+            $args->{named_params}->{$args->{name}}
+        );
+    }
 }
 
 =head1 EXPORT
