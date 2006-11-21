@@ -5,6 +5,7 @@ META.yml # Will be created by "make dist"
 README
 lib/Text/Sprintf/Named.pm
 t/00-load.t
+t/01-use.t
 t/boilerplate.t
 t/pod-coverage.t
 t/pod.t

@@ -3,6 +3,8 @@ package Text::Sprintf::Named;
 use warnings;
 use strict;
 
+use Carp;
+
 =head1 NAME
 
 Text::Sprintf::Named - sprintf-like function with named conversions
@@ -40,6 +42,67 @@ as a string, and C<"%(num)4d"> will emit the C<'num'> parameter
 as a variable with a width of 4.
 
 =head1 FUNCTIONS
+
+=head2 my $formatter = Text::Sprintf::Named->new({fmt => $format})
+
+Creates a new object which formats according to the C<$format> format.
+
+=cut
+
+sub new
+{
+    my $class = shift;
+
+    my $self = {};
+    bless $self, $class;
+
+    $self->_init(@_);
+
+    return $self;
+}
+
+sub _init
+{
+    my ($self, $args) = @_;
+
+    my $fmt = $args->{fmt} or
+        confess "The 'fmt format was not specified for Text::Sprintf::Named.";
+    $self->_fmt($fmt);
+
+    return 0;
+}
+
+sub _fmt
+{
+    my $self = shift;
+
+    if (@_)
+    {
+        $self->{_fmt} = shift;
+    }
+
+    return $self->{_fmt};
+}
+
+=head2 $formatter->format({args => \%bindings})
+
+Returns the formatting string as formatted using the named parameters
+pointed to by C<args>.
+
+=cut
+
+sub format
+{
+    my $self = shift;
+
+    my $args = shift || { args => {}};
+
+    my $format = $self->_fmt;
+
+    $format =~ s{%%}{%}g;
+
+    return $format;
+}
 
 =head1 EXPORT
 
