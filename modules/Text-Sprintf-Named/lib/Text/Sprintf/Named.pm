@@ -5,7 +5,7 @@ use strict;
 
 =head1 NAME
 
-Text::Sprintf::Named - The great new Text::Sprintf::Named!
+Text::Sprintf::Named - sprintf-like function with named conversions
 
 =head1 VERSION
 
@@ -17,35 +17,34 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
     use Text::Sprintf::Named;
 
-    my $foo = Text::Sprintf::Named->new();
-    ...
+    my $formatter =
+        Text::Sprintf::Named->new(
+            {fmt => "Hello %(name)s! Today is %(day)s!"
+        );
+
+    # Returns "Hello Ayeleth! Today is Sunday!"
+    $formmater->format({'name' => "Ayeleth", 'day' => "Sunday"});
+
+    # Returns "Hello John! Today is Thursday!"
+    $formatter->format({'name' => "John", 'day' => "Thursday"});
+
+=head1 DESCRIPTION
+
+Text::Sprintf::Named provides a sprintf equivalent with named conversions.
+Named conversions are sprintf field specifiers (like C<"%s"> or C<"%4d>")
+only they are associated with the key of an associative array of
+parameters. So for example C<"%(name)s"> will emit the C<'name'> parameter
+as a string, and C<"%(num)4d"> will emit the C<'num'> parameter 
+as a variable with a width of 4.
+
+=head1 FUNCTIONS
 
 =head1 EXPORT
 
 A list of functions that can be exported.  You can delete this section
 if you don't export anything, such as for a purely object-oriented module.
-
-=head1 FUNCTIONS
-
-=head2 function1
-
-=cut
-
-sub function1 {
-}
-
-=head2 function2
-
-=cut
-
-sub function2 {
-}
 
 =head1 AUTHOR
 
@@ -93,7 +92,10 @@ L<http://search.cpan.org/dist/Text::Sprintf::Named>
 
 Copyright 2006 Shlomi Fish, all rights reserved.
 
-This program is released under the following license: bsd
+This program is released under the following license: MIT X11. 
+
+(Note that the module's meta-data specifies it's distributed under the BSD 
+license, which is the closest option to the MIT X11 license.)
 
 =cut
 
