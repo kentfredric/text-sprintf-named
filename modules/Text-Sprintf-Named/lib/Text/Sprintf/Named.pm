@@ -125,10 +125,18 @@ sub _conversion
     }
     else
     {
-        return sprintf(("%" . $args->{conv_prefix} . $args->{conv_letter}),
+        return $self->_sprintf(
+            ("%" . $args->{conv_prefix} . $args->{conv_letter}),
             $args->{named_params}->{$args->{name}}
         );
     }
+}
+
+sub _sprintf
+{
+    my ($self, $format, @args) = @_;
+
+    return sprintf($format, @args);
 }
 
 =head1 EXPORT
