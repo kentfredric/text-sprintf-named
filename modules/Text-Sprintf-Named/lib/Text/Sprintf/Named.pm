@@ -87,7 +87,7 @@ sub _fmt
 =head2 $formatter->format({args => \%bindings})
 
 Returns the formatting string as formatted using the named parameters
-pointed to by C<args>.
+pointed to by the C<args> parameter.
 
 =cut
 
@@ -139,14 +139,9 @@ sub _sprintf
     return sprintf($format, @args);
 }
 
-=head1 EXPORT
-
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
-
 =head1 AUTHOR
 
-Shlomi Fish, C<< <shlomif at cpan.org> >>
+Shlomi Fish, C<< shlomif@cpan.org >> , L<http://www.shlomifish.org/>
 
 =head1 BUGS
 
@@ -181,6 +176,10 @@ L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Text::Sprintf::Named>
 =item * Search CPAN
 
 L<http://search.cpan.org/dist/Text::Sprintf::Named>
+
+=item * Subversion Repository
+
+L<http://svn.berlios.de/svnroot/repos/web-cpan/Text-Sprintf/trunk/>
 
 =back
 
