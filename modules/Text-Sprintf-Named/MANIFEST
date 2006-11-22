@@ -1,11 +1,12 @@
 Build.PL
 Changes
+lib/Text/Sprintf/Named.pm
 MANIFEST
 META.yml # Will be created by "make dist"
 README
-lib/Text/Sprintf/Named.pm
 t/00-load.t
 t/01-use.t
 t/boilerplate.t
+TODO
 t/pod-coverage.t
 t/pod.t
