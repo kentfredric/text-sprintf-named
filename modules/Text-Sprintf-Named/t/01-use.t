@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 11;
+use Test::More tests => 14;
 
 use Text::Sprintf::Named;
 
@@ -102,5 +102,28 @@ sub n_s
     is (n_s("1.57 + 2.32 = %(result)5.2f", { result => 3.98 }),
         "1.57 + 2.32 =  3.98",
         "Testing a %(name)5.2f conversion"
+    );
+}
+
+{
+    my $obj = Text::Sprintf::Named->new(
+        {
+            fmt => "Hello %(name)s. Your lucky number is %(num)04d!"
+        }
+    );
+
+    # TEST
+    ok ($obj, "Object was instantiated");
+
+    # TEST
+    is ($obj->format({args => {'name' => "Jill", 'num' => "5" }}),
+        "Hello Jill. Your lucky number is 0005!",
+        "Testing multiple ->format calls for the same object - 1"
+    );
+
+    # TEST
+    is ($obj->format({args => {'name' => "Avi", 'num' => "6508" }}),
+        "Hello Avi. Your lucky number is 6508!",
+        "Testing multiple ->format calls for the same object - 2"        
     );
 }
