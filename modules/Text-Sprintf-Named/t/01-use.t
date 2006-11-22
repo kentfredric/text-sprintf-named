@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 10;
+use Test::More tests => 11;
 
 use Text::Sprintf::Named;
 
@@ -94,5 +94,13 @@ sub n_s
     is (n_s("[%(name)10s]", { name => "Sophie" }),
         "[    Sophie]",
         "Testing a %(name)10s conversion"
+    );
+}
+
+{
+    # TEST
+    is (n_s("1.57 + 2.32 = %(result)5.2f", { result => 3.98 }),
+        "1.57 + 2.32 =  3.98",
+        "Testing a %(name)5.2f conversion"
     );
 }
