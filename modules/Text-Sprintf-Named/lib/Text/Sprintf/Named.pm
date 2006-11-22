@@ -101,13 +101,14 @@ sub format
 
     my $format = $self->_fmt;
 
-    $format =~ s/%(%|\(([a-zA-Z_]\w*)\)([\+\-\.\d]*[DEFGOUXbcdefgiopsux]))/
+    $format =~ s/%(%|\(([a-zA-Z_]\w*)\)([\+\-\.\d]*)([DEFGOUXbcdefgiopsux]))/
         $self->_conversion({
             format_args => $args,
             named_params => $named_params,
             conv => $1,
             name => $2,
-            conv_raw => $3,
+            conv_prefix => $3,
+            conv_letter => $4,
         })
         /ge;
 
@@ -124,7 +125,7 @@ sub _conversion
     }
     else
     {
-        return sprintf(("%" . $args->{conv_raw}),
+        return sprintf(("%" . $args->{conv_prefix} . $args->{conv_letter}),
             $args->{named_params}->{$args->{name}}
         );
     }
