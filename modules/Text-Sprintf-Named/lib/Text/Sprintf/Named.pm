@@ -115,6 +115,35 @@ sub format
     return $format;
 }
 
+=head2 $self->calc_param({%args})
+
+This method is used to calculate the parameter for the conversion. It
+can be over-rided by subclasses so it will behave differently. An example
+can be found in C<t/02-override-param-retrieval.t> where it is used to
+call the accessors of an object for values.
+
+%args contains:
+
+=over 4
+
+=item * named_params
+
+The named paramters.
+
+=item * name
+
+The name of the conversion.
+
+=back
+
+=cut
+sub calc_param
+{
+    my ($self, $args) = @_;
+
+    return $args->{named_params}->{$args->{name}};
+}
+
 sub _conversion
 {
     my ($self, $args) = @_;
@@ -127,7 +156,7 @@ sub _conversion
     {
         return $self->_sprintf(
             ("%" . $args->{conv_prefix} . $args->{conv_letter}),
-            $args->{named_params}->{$args->{name}}
+            $self->calc_param($args),
         );
     }
 }
