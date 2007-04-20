@@ -1,5 +1,9 @@
 Revision history for Text::Sprintf::Named
 
+0.02    Fri Apr 20 09:20:15 IDT 2007
+        Added the customisation of the named parameter, to determine
+        how to calculate it. (see calc_param()).
+
 0.01    TODO : Fill the time.
         First version, released on an unsuspecting world.
 
