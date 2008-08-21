@@ -1,5 +1,13 @@
 Revision history for Text::Sprintf::Named
 
+0.0201  Thu Aug 21 21:25:11 IDT 2008
+        * Changed the Build.PL license from 'bsd' to 'mit'.
+        * Added create_makefile_pl => 'passthrough' to Build.PL to
+        generate a Makefile.PL in the distribution.
+            - this is to settle systems that don't have Moudle-Build
+            installed.
+        * Revised the licensing information in the POD.
+
 0.02    Fri Apr 20 09:20:15 IDT 2007
         Added the customisation of the named parameter, to determine
         how to calculate it. (see calc_param()).

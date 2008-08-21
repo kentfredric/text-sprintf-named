@@ -11,11 +11,11 @@ Text::Sprintf::Named - sprintf-like function with named conversions
 
 =head1 VERSION
 
-Version 0.02
+Version 0.0201
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.0201';
 
 =head1 SYNOPSIS
 
@@ -222,10 +222,9 @@ Lateur (BARTL on CPAN) for his L<String::Sprintf> module.
 
 Copyright 2006 Shlomi Fish, all rights reserved.
 
-This program is released under the following license: MIT X11. 
+This program is released under the following license: MIT/X11:
 
-(Note that the module's meta-data specifies it's distributed under the BSD 
-license, which is the closest option to the MIT X11 license.)
+L<http://www.opensource.org/licenses/mit-license.php>
 
 =cut
 
