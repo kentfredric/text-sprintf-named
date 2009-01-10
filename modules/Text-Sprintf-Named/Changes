@@ -1,5 +1,6 @@
 Revision history for Text::Sprintf::Named
 
+0.0202  Sat Jan 10 21:22:20 IST 2009
         * Corrected the synopsis to say ->format({args => \%args})
         instead of ->format(\%args) which was incorrect.
             - Thanks to kent\n!
