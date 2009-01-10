@@ -98,6 +98,10 @@ sub format
 
     my $args = shift || {};
 
+    if ( (scalar keys %{$args}) > 0  && not exists $args->{args} ){
+        warnings::warnif( $self, 'Format parameters were specified, but none of them were \'args\', this is probably a mistake.' );
+    }
+
     my $named_params = $args->{args} || {};
 
     my $format = $self->_fmt;
