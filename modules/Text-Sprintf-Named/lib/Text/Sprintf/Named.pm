@@ -27,10 +27,10 @@ our $VERSION = '0.0201';
         );
 
     # Returns "Hello Ayeleth! Today is Sunday!"
-    $formmater->format({'name' => "Ayeleth", 'day' => "Sunday"});
+    $formmater->format({args => {'name' => "Ayeleth", 'day' => "Sunday"}});
 
     # Returns "Hello John! Today is Thursday!"
-    $formatter->format({'name' => "John", 'day' => "Thursday"});
+    $formatter->format({args => {'name' => "John", 'day' => "Thursday"}});
 
 =head1 DESCRIPTION
 

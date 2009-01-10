@@ -1,5 +1,9 @@
 Revision history for Text::Sprintf::Named
 
+        * Corrected the synopsis to say ->format({args => \%args})
+        instead of ->format(\%args) which was incorrect.
+            - Thanks to kent\n!
+
 0.0201  Thu Aug 21 21:25:11 IDT 2008
         * Changed the Build.PL license from 'bsd' to 'mit'.
         * Added create_makefile_pl => 'passthrough' to Build.PL to
