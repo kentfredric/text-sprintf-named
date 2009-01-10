@@ -4,6 +4,7 @@ use warnings;
 use strict;
 
 use Carp;
+use warnings::register;
 
 =head1 NAME
 
@@ -140,7 +141,10 @@ The name of the conversion.
 sub calc_param
 {
     my ($self, $args) = @_;
-
+    if ( not exists $args->{named_params}->{$args->{name}} ){
+        warnings::warnif($self, "Token '$args->{name}' specified in the format '$self->{_fmt}' was not found." );
+        return '';
+    }
     return $args->{named_params}->{$args->{name}};
 }
 
