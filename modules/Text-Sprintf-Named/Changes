@@ -1,6 +1,6 @@
 Revision history for Text::Sprintf::Named
 
-0.0203
+0.0203  Sat Jan 10 21:27:31 IST 2009
         * Corrected two more code typos in the synopsis.
             - Thanks to kent\n!
 

@@ -11,11 +11,11 @@ Text::Sprintf::Named - sprintf-like function with named conversions
 
 =head1 VERSION
 
-Version 0.0202
+Version 0.0203
 
 =cut
 
-our $VERSION = '0.0202';
+our $VERSION = '0.0203';
 
 =head1 SYNOPSIS
 
