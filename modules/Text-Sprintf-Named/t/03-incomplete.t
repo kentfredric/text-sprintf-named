@@ -9,18 +9,18 @@ use Text::Sprintf::Named;
 
 my $obj;
 
-#Test 1
+# TEST
 $obj = Text::Sprintf::Named->new( { fmt => 'No Tokens Here!', } );
 
 warnings_are { $obj->format() }[], 'No Tokens and No Parameters';
 
-#Test 2
+# TEST
 $obj = Text::Sprintf::Named->new( { fmt => "Example >%(name)s<", } );
 
 warning_like { $obj->format() } qr/Token 'name'/,
   'Missing Token Throws Warning ( String )';
 
-#Test 3
+# TEST
 $obj = Text::Sprintf::Named->new( { fmt => "Example >%(foo)8.3f<", } );
 
 warnings_like { $obj->format() }[ qr/Token 'foo'/, qr/numeric.*sprintf/ ],
@@ -28,25 +28,24 @@ warnings_like { $obj->format() }[ qr/Token 'foo'/, qr/numeric.*sprintf/ ],
 
 no warnings 'Text::Sprintf::Named';
 
-#Test 4
+# TEST
 $obj = Text::Sprintf::Named->new( { fmt => 'No Tokens Here!', } );
 
 warnings_are { $obj->format() }[], 'No Tokens and No Parameters';
 
-#Test 5
+# TEST
 $obj = Text::Sprintf::Named->new( { fmt => "Example >%(name)s<", } );
 
 warnings_are { $obj->format() }[],
   '[Silent] Missing Token Throws Warning ( String )';
 
-#Test 6
+# TEST
 $obj = Text::Sprintf::Named->new( { fmt => "Example >%(foo)8.3f<", } );
 
 warnings_like { $obj->format() }[qr/numeric.*sprintf/],
   '[Subdued] Missing Token Throws Warning ( Float )';
 
-#Test 7
-
+# TEST
 $obj = Text::Sprintf::Named->new( { fmt => '.' } );
 
 use warnings 'Text::Sprintf::Named';
@@ -63,7 +62,7 @@ warning_like {
 qr/Format parameters were specified, but none/,
   'Weird Format Parameters Throws Warning';
 
-# Test 8
+# TEST
 no warnings 'Text::Sprintf::Named';
 
 warnings_are {

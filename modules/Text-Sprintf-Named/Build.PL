@@ -9,6 +9,7 @@ my $builder = Module::Build->new(
     dist_version_from   => 'lib/Text/Sprintf/Named.pm',
     build_requires => {
         'Test::More' => 0,
+        'Test::Warn' => 0,
     },
     add_to_cleanup      => [ 'Text::Sprintf::Named-*' ],
     create_makefile_pl => 'passthrough',
